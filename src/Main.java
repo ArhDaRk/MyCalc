@@ -18,27 +18,18 @@ class InputData {
         String calculate = "";
         int first = Integer.parseInt(a);
         int second = Integer.parseInt(b);
-        switch (op){
-            case "+":
-                System.out.println(first + second);
-                break;
-            case "-":
-                System.out.println(first - second);
-                break;
-            case "*":
-                System.out.println(first * second);
-                break;
-            case "/":
-                System.out.println(first / second);
-                break;
-            default:
-                throw new IllegalStateException("Этот калькулятор не знает такого операнда: " + op);
+        switch (op) {
+            case "+" -> System.out.println(first + second);
+            case "-" -> System.out.println(first - second);
+            case "*" -> System.out.println(first * second);
+            case "/" -> System.out.println(first / second);
+            default -> throw new IllegalStateException("Этот калькулятор не знает такого операнда: " + op);
         }
         return calculate;
     }
     public static String whatIsIt(String cell1,String operand, String cell2){
         String[] rimNumbers = {"I","II","III","IV","V","VI","VII","VIII","IX","X"};
-        String [] numbers = {"1","2","3","4","5","6","7","8","9","10"};
+        String[] numbers = {"1","2","3","4","5","6","7","8","9","10"};
         for (String arab : numbers){
             if(arab.equals(cell1)) {
                 for(String arab2 : numbers){
@@ -46,10 +37,6 @@ class InputData {
                         return getOperandAndCalculate(cell1,operand,cell2); //вернуть результат операции иначе проверить дальше
                     }
                 }
-                for (String arab2 : rimNumbers)
-                    if (arab2.equals(cell2)) {
-                        throw new IllegalStateException("используются одновременно разные системы счисления");
-                    }
             }
         }
         for (String rim : rimNumbers){
@@ -61,7 +48,6 @@ class InputData {
                 }
             }
         }
-
-        return "Ерунда тут какая то у Вас";
+        throw new IllegalStateException("используются одновременно разные системы счисления");
     }
 }
