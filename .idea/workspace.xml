@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88321be7-600b-4f81-9889-f4689ba8e5de" name="Changes" comment="Первый вывод калькулятора в кансоль.">
-      <change afterPath="$PROJECT_DIR$/src/RimNumbers.java" afterDir="false" />
+    <list default="true" id="88321be7-600b-4f81-9889-f4689ba8e5de" name="Changes" comment="add: enum">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RimNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RimNumbers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674080277638</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add: enum">
+      <created>1674252449526</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674252449526</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,7 +97,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Первый вывод калькулятора в кансоль." />
-    <option name="LAST_COMMIT_MESSAGE" value="Первый вывод калькулятора в кансоль." />
+    <MESSAGE value="add: enum" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: enum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -98,6 +106,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

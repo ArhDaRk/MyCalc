@@ -12,7 +12,7 @@ class InputData {
     String inputValue;
     void calculate(){
         String[] words = inputValue.split(" ");
-        System.out.println(whatIsIt(words[0],words[1],words[2]));
+        whatIsIt(words[0],words[1],words[2]);
     }
     public static String getOperandAndCalculate(String a,String op,String b){
         String calculate = "";
@@ -43,7 +43,9 @@ class InputData {
             if(rim.equals(cell1)){
                 for(String rim2 : rimNumbers){
                     if (rim2.equals(cell2)){
-                        return cell1 + cell2; // тут логику сложения римских чисел
+                        RimNumbers num1 = RimNumbers.valueOf(cell1);
+                        RimNumbers num2 = RimNumbers.valueOf(cell2);
+                        return getOperandAndCalculate(Integer.toString(num1.getNumber()),operand,Integer.toString(num2.getNumber())); // тут логику сложения римских чисел
                     }
                 }
             }
