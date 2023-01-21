@@ -7,6 +7,17 @@ public enum RimNumbers {
     public int  getNumber(){
         return arabNumber;
     }
+    public String getName(){
+        return this.name();
+    }
+    public static RimNumbers valueOfLabel(int arabNumber) {
+        for (RimNumbers any : values()) {
+            if (any.arabNumber == arabNumber) {
+                return any;
+            }
+        }
+        return null;
+    }
 }
 
 

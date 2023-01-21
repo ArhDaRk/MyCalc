@@ -14,15 +14,15 @@ class InputData {
         String[] words = inputValue.split(" ");
         whatIsIt(words[0],words[1],words[2]);
     }
-    public static String getOperandAndCalculate(String a,String op,String b){
-        String calculate = "";
+    public static int getOperandAndCalculate(String a,String op,String b){
+        int calculate;
         int first = Integer.parseInt(a);
         int second = Integer.parseInt(b);
         switch (op) {
-            case "+" -> System.out.println(first + second);
-            case "-" -> System.out.println(first - second);
-            case "*" -> System.out.println(first * second);
-            case "/" -> System.out.println(first / second);
+            case "+" -> calculate = (first + second);
+            case "-" -> calculate = (first - second);
+            case "*" -> calculate = (first * second);
+            case "/" -> calculate = (first / second);
             default -> throw new IllegalStateException("Этот калькулятор не знает такого операнда: " + op);
         }
         return calculate;
@@ -34,7 +34,8 @@ class InputData {
             if(arab.equals(cell1)) {
                 for(String arab2 : numbers){
                     if(arab2.equals(cell2)){
-                        return getOperandAndCalculate(cell1,operand,cell2); //вернуть результат операции иначе проверить дальше
+                        int answer = getOperandAndCalculate(cell1,operand,cell2); //вернуть результат операции иначе проверить дальше
+                        return Integer.toString(answer);
                     }
                 }
             }
@@ -45,11 +46,19 @@ class InputData {
                     if (rim2.equals(cell2)){
                         RimNumbers num1 = RimNumbers.valueOf(cell1);
                         RimNumbers num2 = RimNumbers.valueOf(cell2);
-                        return getOperandAndCalculate(Integer.toString(num1.getNumber()),operand,Integer.toString(num2.getNumber())); // тут логику сложения римских чисел
+                        int answer = getOperandAndCalculate(Integer.toString(num1.getNumber()),operand,Integer.toString(num2.getNumber()));  // тут логику сложения римских чисел
+                        System.out.println(RimNumbers.valueOfLabel(answer));
+                        return null;
                     }
                 }
             }
         }
         throw new IllegalStateException("используются одновременно разные системы счисления");
     }
+//    public String checkRimAnswer(String answer){
+//        for(answer : RimNumbers.values()){
+//
+//        }
+//
+//    }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88321be7-600b-4f81-9889-f4689ba8e5de" name="Changes" comment="add: enum">
+    <list default="true" id="88321be7-600b-4f81-9889-f4689ba8e5de" name="Changes" comment="add: теперь считает римские цифры">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RimNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RimNumbers.java" afterDir="false" />
@@ -81,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674252449526</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add: теперь считает римские цифры">
+      <created>1674321966661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1674321966661</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -98,7 +105,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Первый вывод калькулятора в кансоль." />
     <MESSAGE value="add: enum" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: enum" />
+    <MESSAGE value="add: теперь считает римские цифры" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: теперь считает римские цифры" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
