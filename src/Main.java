@@ -1,6 +1,9 @@
+import java.io.EOFException;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EOFException {
         System.out.print("Введите математическую операцию - два операнда и один оператор (+, -, /, *) ");
         Scanner input = new Scanner(System.in);
         InputData var1 = new InputData();
@@ -10,55 +13,92 @@ public class Main {
 }
 class InputData {
     String inputValue;
-    void calculate(){
+    void calculate() throws EOFException {
         String[] words = inputValue.split(" ");
-        whatIsIt(words[0],words[1],words[2]);
+        if(words.length >= 4){
+            try {
+                throw new IOException();
+            } catch (IOException e){
+                System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+            }
+        }
+        if(words.length == 1){
+            try {
+                throw new IOException();
+            } catch (IOException e){
+                System.out.println("throws Exception //т.к. строка не является математической операцией");
+            }
+        }
+        else System.out.println(whatIsIt(words[0],words[1],words[2]));
     }
-    public static int getOperandAndCalculate(String a,String op,String b){
-        int calculate;
-        int first = Integer.parseInt(a);
-        int second = Integer.parseInt(b);
+    public static int getOperandAndCalculate(int first,String op,int second){
+        int calculate = 0;
         switch (op) {
             case "+" -> calculate = (first + second);
             case "-" -> calculate = (first - second);
             case "*" -> calculate = (first * second);
             case "/" -> calculate = (first / second);
-            default -> throw new IllegalStateException("Этот калькулятор не знает такого операнда: " + op);
+            default -> {
+                try {
+                    throw new IOException();
+                } catch (IOException e){
+                    System.out.println("Этот калькулятор не знает такого операнда: " + op);
+                }
+            }
         }
         return calculate;
     }
     public static String whatIsIt(String cell1,String operand, String cell2){
-        String[] rimNumbers = {"I","II","III","IV","V","VI","VII","VIII","IX","X"};
-        String[] numbers = {"1","2","3","4","5","6","7","8","9","10"};
-        for (String arab : numbers){
-            if(arab.equals(cell1)) {
-                for(String arab2 : numbers){
-                    if(arab2.equals(cell2)){
-                        int answer = getOperandAndCalculate(cell1,operand,cell2); //вернуть результат операции иначе проверить дальше
+            if(checkForArab(cell1) == true && checkForArab(cell2) == true) {
+                        int answer = getOperandAndCalculate(Integer.parseInt(cell1),operand,Integer.parseInt(cell2)); //вернуть результат операции иначе проверить дальше
                         return Integer.toString(answer);
-                    }
+            }
+            if(checkForRim(cell1) == true && checkForRim(cell2) == true){
+                int answer = getOperandAndCalculate(getRimToArab(cell1),operand,getRimToArab(cell2));  // тут логику сложения римских чисел
+                if(answer >= 1) return String.valueOf(RimNumbers.valueOfLabel(answer));
+                try {
+                    throw new IOException();
+                } catch (IOException e){
+                    return  "throws Exception //т.к. т.к. в римской системе нет отрицательных чисел";
                 }
             }
-        }
-        for (String rim : rimNumbers){
-            if(rim.equals(cell1)){
-                for(String rim2 : rimNumbers){
-                    if (rim2.equals(cell2)){
-                        RimNumbers num1 = RimNumbers.valueOf(cell1);
-                        RimNumbers num2 = RimNumbers.valueOf(cell2);
-                        int answer = getOperandAndCalculate(Integer.toString(num1.getNumber()),operand,Integer.toString(num2.getNumber()));  // тут логику сложения римских чисел
-                        System.out.println(RimNumbers.valueOfLabel(answer));
-                        return null;
+            if(checkForArab(cell1) == true && checkForRim(cell2) == true){
+                    try {
+                        throw new IOException();
+                    } catch (IOException e){
+                        return  "throws Exception //т.к. используются одновременно разные системы счисления";
                     }
+            }
+            if(checkForRim(cell1) == true && checkForArab(cell2) == true){
+                try {
+                    throw new IOException();
+                } catch (IOException e){
+                    return  "throws Exception //т.к. используются одновременно разные системы счисления";
                 }
             }
+        try {
+            throw new IOException();
+        } catch (IOException e){
+            return  "throws Exception //т.к. формат математической операции не удовлетворяет заданию";
         }
-        throw new IllegalStateException("используются одновременно разные системы счисления");
     }
-//    public String checkRimAnswer(String answer){
-//        for(answer : RimNumbers.values()){
+    public static Boolean checkForArab(String input){
 //
-//        }
-//
-//    }
+        String[] numbers = {"1","2","3","4","5","6","7","8","9","10"};
+        for(String check : numbers){
+                if(check.equals(input)) return true;
+        }
+        return false;
+    }
+    public static Boolean checkForRim(String input){
+        String[] rimNumbers = {"I","II","III","IV","V","VI","VII","VIII","IX","X"};
+        for(String check : rimNumbers){
+            if(check.equals(input)) return true;
+        }
+        return false;
+    }
+    public static int getRimToArab (String  input){
+               RimNumbers out =  RimNumbers.valueOf(input);
+        return out.getNumber();
+    }
 }
